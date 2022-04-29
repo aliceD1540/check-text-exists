@@ -1,6 +1,5 @@
 import os
 import sys
-from turtle import heading, width
 import PySimpleGUI as sg
 
 header = ('File Path', 'Exists')
@@ -15,7 +14,7 @@ def isExistWord(path_list: list, word: str):
     for path in path_list:
         try:
             file_path = path[0]
-            with open(file_path, encoding="utf-8") as f:
+            with open(file_path, encoding="utf-8", errors='ignore') as f:
                 # for line in f.readlines():
                 #     if word in line:
                 #         ans_list.append([file_path, 'True'])
