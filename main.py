@@ -5,6 +5,14 @@ import PySimpleGUI as sg
 header = ('File Path', 'Exists')
 path_list = []
 
+# 引数に与えたファイルを読み込む、与えていない場合はtarget_file.txtを読み込む
+if len(sys.argv) > 1 and sys.argv[1] != '':
+    setting_file_path = sys.argv[1]
+else:
+    setting_file_path = './target_file.txt'
+
+print(setting_file_path)
+
 # main.pyのあるディレクトリに移動しておく
 os.chdir(os.path.dirname(os.path.abspath(sys.argv[0])))
 
@@ -29,7 +37,7 @@ def isExistWord(path_list: list, word: str):
 
 
 # 確認対象ファイル一覧を読み込む
-with open("target_file.txt") as f:
+with open(setting_file_path) as f:
     target_list = f.readlines()
     for target_path in target_list:
         path_list.append([target_path.strip(), ''])
